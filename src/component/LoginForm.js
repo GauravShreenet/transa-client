@@ -23,7 +23,7 @@ export const LoginForm = () => {
     const [isPending, setIsPending] = useState(false);
 
     const handleOnChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setForm({
             ...form,
             [name]: value,
@@ -43,6 +43,10 @@ export const LoginForm = () => {
         console.log(data)
 
         if (data && data.status === 'success') {
+            // store user in session storage
+            sessionStorage.setItem("user", JSON.stringify(data.user))
+
+            // redirect user
             navigate('/dashboard');
         }
     }
@@ -66,19 +70,19 @@ export const LoginForm = () => {
 
     return (
         <Form onSubmit={handleOnSubmit}>
-        {resp.message && <Alert variant={resp.status === 'success' ? 'success' : 'danger'}>{ " " }{resp.message}</Alert>}
-        {inputs.map((item, i) => (
-            <CustomInput key={i} {...item} onChange={handleOnChange} />
-        ))}
+            {resp.message && <Alert variant={resp.status === 'success' ? 'success' : 'danger'}>{" "}{resp.message}</Alert>}
+            {inputs.map((item, i) => (
+                <CustomInput key={i} {...item} onChange={handleOnChange} />
+            ))}
 
-        <div className="d-grid">
-            <Button variant="primary" type="submit" disabled={isPending}>
-                {isPending ? <Spinner /> : "Login"}
-            </Button>
-        </div>
-        <div className="text-end mt-4">
-            Are you a new Member? <Link to='/signup'>Register</Link> Now
-        </div>
-    </Form>
+            <div className="d-grid">
+                <Button variant="primary" type="submit" disabled={isPending}>
+                    {isPending ? <Spinner /> : "Login"}
+                </Button>
+            </div>
+            <div className="text-end mt-4">
+                Are you a new Member? <Link to='/signup'>Register</Link> Now
+            </div>
+        </Form>
     )
 }

@@ -1,10 +1,14 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
 import { LoginForm } from '../component/LoginForm'
+import TopNav from '../component/TopNav'
 
 const Login = () => {
   return (
+    <>
+    <TopNav />
     <Container fluid>
+        
         <Row>
             <Col className='bg-primary text-light vh-100 d-flex justify-content-center align-items-center d-xsm-none'>
                 <div className='shadow-lg rounded p-3'>
@@ -21,6 +25,7 @@ const Login = () => {
             </Col>
         </Row>
     </Container>
+    </>
   )
 }
 
