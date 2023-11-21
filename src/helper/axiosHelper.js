@@ -65,3 +65,39 @@ export const postTrans = async(transObj) => {
         }
     }
 }
+
+export const getTrans = async() => {
+    try {
+        const userId = getUserId()
+        if(!userId){
+            return {
+                status: 'error',
+                message: 'userId not found'
+            }
+        }
+        const { data } = await axios.get(transApi, { headers: {
+            Authorization: userId,
+        }})
+        console.log(data)
+        return data
+    } catch (error) {
+        console.log(error)
+        return {
+            status: 'error',
+            message: error.message
+        }
+    }
+}
+
+export const deleteTrans = async(ids) => {
+    try {
+        const { data } = await axios.delete(transApi, { data: ids})
+        return data
+    } catch (error) {
+        console.log(error)
+        return{
+            status: "error",
+            message: error.message,
+        }
+    }
+}

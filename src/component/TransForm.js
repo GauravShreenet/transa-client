@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
-import { Form, Col, Row, Button } from 'react-bootstrap'
+import { Form, Col, Row, Button, Alert } from 'react-bootstrap'
 import { CustomInput } from './CustomInput.js';
 import { postTrans } from '../helper/axiosHelper.js';
 
 
-export const TransForm = () => {
+export const TransForm = ({getAllTrans}) => {
 
     const [form, setForm] = useState({});
+    const [resp, setResp] = useState({})
 
     const handleOnSubmit = async(e) => {
         e.preventDefault();
         console.log(form);
 
         const result = await postTrans(form);
+        setResp(result)
+
+        if(result.status === 'success'){
+            getAllTrans();
+        }
 
     }
 
@@ -48,6 +54,11 @@ export const TransForm = () => {
     }]
 
     return (
+        <div className="mt-5">
+            {
+            resp.message && (
+                <Alert variant={resp.status === "success"}>{resp.message}</Alert>)
+        }
         <Form 
         onSubmit={handleOnSubmit}
         className='shadow-lg border rounded p-3 bg-secondary'>
@@ -81,5 +92,7 @@ export const TransForm = () => {
                 </Col>
             </Row>
         </Form>
+        </div>
+        
     )
 }
