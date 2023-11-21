@@ -9,15 +9,15 @@ const Register = () => {
             <TopNav />
             <Container fluid>
                 <Row>
-                    <Col className='bg-info text-light vh-100 d-flex justify-content-center align-items-center d-xsm-none'>
+                    <Col className='d-none d-sm-flex bg-info text-light vh-100 justify-content-center align-items-center'>
                         <div className='shadow-lg rounded p-3'>
                             <h1>Join Our Community!</h1>
                             <p>Laverage our system to track your finance</p>
                         </div>
                     </Col>
-                    <Col className='d-flex justify-content-center align-items-center'>
+                    <Col className='d-flex justify-content-center align-items-center mt-5'>
                         <div className='shadow-lg p-5 border rounded-4'>
-                            <h1>Register</h1>
+                            <h1>Register Now:</h1>
                             <hr />
                             <RegisterForm />
                         </div>
