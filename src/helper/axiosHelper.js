@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const rootApi = 'http://localhost:8000/api/v1'
+const rootApi = process.env.REACT_APP_ROOTAPI;
 const userApi = rootApi + "/user"
 const loginApi = userApi + "/login"
 const transApi = rootApi + "/transaction"
@@ -18,7 +18,7 @@ const getUserId = () => {
 export const postUser = async(userObj) => {
     try {
         const { data } = await axios.post(userApi, userObj)
-        console.log(data)
+
         return data
     } catch (error) {
         console.log(error)
@@ -32,7 +32,7 @@ export const postUser = async(userObj) => {
 export const loginUser = async(user) => {
     try {
         const { data } = await axios.post(loginApi, user)
-        console.log(data)
+    
         return data
     } catch (error) {
         console.log(error)
@@ -55,7 +55,6 @@ export const postTrans = async(transObj) => {
         const { data } = await axios.post(transApi, transObj, { headers: {
             Authorization: userId,
         }})
-        console.log(data)
         return data
     } catch (error) {
         console.log(error)
@@ -78,7 +77,7 @@ export const getTrans = async() => {
         const { data } = await axios.get(transApi, { headers: {
             Authorization: userId,
         }})
-        console.log(data)
+
         return data
     } catch (error) {
         console.log(error)
@@ -102,7 +101,7 @@ export const deleteTrans = async(idArgs) => {
             headers: {
             Authorization: userId,
         }})
-        console.log(data)
+
         return data
     } catch (error) {
         console.log(error)

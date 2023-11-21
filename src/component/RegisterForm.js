@@ -35,7 +35,7 @@ export const RegisterForm = () => {
 
     const handleOnSubmit = async(e) => {
         e.preventDefault()
-        console.log(form)
+
         const {confirmPassword, ...rest} = form;
         //let's check password if they match
         if(confirmPassword !== rest.password) {

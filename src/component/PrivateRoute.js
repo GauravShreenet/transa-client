@@ -7,7 +7,7 @@ export const PrivateRoute = ({children}) => {
     const userJson = sessionStorage.getItem('user');
 
     const userObj = JSON.parse(userJson)
-    console.log(userJson);
+    
 
     //pars it to obj
 

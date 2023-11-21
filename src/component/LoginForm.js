@@ -33,14 +33,14 @@ export const LoginForm = () => {
 
     const handleOnSubmit = async (e) => {
         e.preventDefault();
-        // console.log(form)
+       
         setResp({})
         setIsPending(true);
 
         const data = await loginUser(form);
         setResp(data);
         setIsPending(false);
-        console.log(data)
+    
 
         if (data && data.status === 'success') {
             // store user in session storage
@@ -65,8 +65,6 @@ export const LoginForm = () => {
         required: true,
         placeholder: "*******",
     }]
-
-    console.log(form)
 
     return (
         <Form onSubmit={handleOnSubmit}>

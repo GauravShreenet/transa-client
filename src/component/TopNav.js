@@ -16,6 +16,9 @@ const TopNav = () => {
     <Navbar expand="md" className="bg-info">
       <Container fluid>
         <Navbar.Brand href="#home">TR</Navbar.Brand>
+        <div className="text-center">
+          Welcome {userObj.name}
+        </div>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto ">

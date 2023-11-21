@@ -8,19 +8,8 @@ export const TransTable = ({ transList, getAllTrans, setResp }) => {
 
     const handleOnSelectAll = (e) => {
         const { checked, value } = e.target;
-        console.log(checked, value);
-
-        // const filterArg = [];
-        // transList.forEach(item => {
-        //     if (item.type === value) {
-        //         filterArg.push(item._id)
-        //     }
-            
-        // })
-        // console.log(filterArg)
-
+        
         const filterArg = transList.map((item)=>item._id);
-        console.log(filterArg)
 
         if (checked) {
             setIdsToDelete([...idsToDelete, ...filterArg]);
@@ -32,7 +21,6 @@ export const TransTable = ({ transList, getAllTrans, setResp }) => {
 
     const handleOnItemSelect = (e) => {
         const { checked, value } = e.target;
-        console.log(checked, value);
         if (checked) {
             setIdsToDelete([...idsToDelete, value])
         } else {
