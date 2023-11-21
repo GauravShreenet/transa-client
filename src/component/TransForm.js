@@ -4,7 +4,7 @@ import { CustomInput } from './CustomInput.js';
 import { postTrans } from '../helper/axiosHelper.js';
 
 const initialState = {
-    date: null,
+    date: "",
     title: "",
     type: "",
     amount: "",
