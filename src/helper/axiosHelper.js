@@ -89,15 +89,26 @@ export const getTrans = async() => {
     }
 }
 
-export const deleteTrans = async(ids) => {
+export const deleteTrans = async(idArgs) => {
     try {
-        const { data } = await axios.delete(transApi, { data: ids})
+        const userId = getUserId()
+        if(!userId){
+            return {
+                status: 'error',
+                message: 'userId not found'
+            }
+        }
+        const { data } = await axios.delete(transApi,{ data: idArgs, 
+            headers: {
+            Authorization: userId,
+        }})
+        console.log(data)
         return data
     } catch (error) {
         console.log(error)
-        return{
-            status: "error",
-            message: error.message,
+        return {
+            status: 'error',
+            message: error.message
         }
     }
 }

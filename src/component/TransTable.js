@@ -61,10 +61,11 @@ export const TransTable = ({ transList, getAllTrans, setResp }) => {
                     <td><input type="checkbox"
                         className='form-check-input'
                         id='allTrans'
+                        checked={idsToDelete.length === transList.length}
                         onChange={handleOnSelectAll}
                         value='trans' /> {" "}
 
-                        SelectAll</td>
+                        <label htmlFor='allTrans'>SelectAll</label></td>
                     <Table className='table-striped-column table-hover'>
                         <tbody>
                             <tr>
@@ -95,7 +96,7 @@ export const TransTable = ({ transList, getAllTrans, setResp }) => {
                                             (
                                                 <>
                                                     <td></td>
-                                                    <td className='text-danger fw-bold'>{amount}</td>
+                                                    <td className='text-danger fw-bold'>-{amount}</td>
                                                 </>
                                             )
                                     }
@@ -121,8 +122,9 @@ export const TransTable = ({ transList, getAllTrans, setResp }) => {
                     <div>
                         {
                             idsToDelete.length > 0 && (
-                                <div className="d-grid mt-5">
+                                <div className='d-flex justify-content-center'>
                                     <Button variant='danger'
+                                    className='px-5'
                                         onClick={handleOnDelete}>
                                         Delete {idsToDelete.length} Trans
                                     </Button>
